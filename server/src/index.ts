@@ -2,6 +2,7 @@ import express, { Application, Request, Response } from 'express'
 import 'dotenv/config'
 import connectDb from './utils/db'
 import bookRouter from './routes/bookRouts'
+import authRouter from './routes/authRoute'
 
 
 const app: Application = express()
@@ -14,7 +15,8 @@ app.get('/', (req: Request, res: Response) => {
     })
 })
 
-app.use('/', bookRouter)
+app.use('/book', bookRouter)
+app.use('/auth', authRouter)
 
 
 connectDb()
